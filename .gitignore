@@ -1,0 +1,6 @@
+# These are OS specific
+lib/raylib/lib/*
+
+# Zig stuff
+zig-out
+.zig-cache
