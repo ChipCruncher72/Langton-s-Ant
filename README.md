@@ -1,7 +1,7 @@
 This is a Langton's ant simulation written in Zig using Raylib
 
-If you'd like to run the simulation download [Raylib](https://github.com/raysan5/raylib/releases) and read the comments in `build.zig`
-Then just run <br/>
+If you'd like to run the simulation download [Raylib](https://github.com/raysan5/raylib/releases) and read the comments in `build.zig` <br/>
+Then just run
 ```sh
 zig build run
 ```
