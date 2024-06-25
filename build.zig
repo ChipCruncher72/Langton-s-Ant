@@ -20,7 +20,7 @@ pub fn build(b: *std.Build) void {
     exe.linkSystemLibrary("winmm");
     exe.linkSystemLibrary("gdi32");
     /////////////////////////////////////////////////////////////////
-    // No object files are supplied in this repo
+    // No Raylib files are supplied in this repo
     // Get them at Raylib's releases page
     exe.addObjectFile(b.path("./lib/raylib/lib/libraylib.a"));
     exe.addIncludePath(b.path("./lib/raylib/include"));
