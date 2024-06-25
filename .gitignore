@@ -1,5 +1,5 @@
 # This should be provided by the user
-lib/raylib/*
+lib
 
 # Zig stuff
 zig-out
