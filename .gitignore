@@ -1,5 +1,5 @@
-# These are OS specific
-lib/raylib/lib/*
+# This should be provided by the user
+lib/raylib/*
 
 # Zig stuff
 zig-out
