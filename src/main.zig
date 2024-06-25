@@ -38,58 +38,65 @@ pub fn main() !void {
 
     var pos = @Vector(2, c_int){GRID_WIDTH/2, GRID_HEIGHT/2};
     var pos_facing = Direction.north;
+    var run_auto = false;
     while (!rl.WindowShouldClose()) {
-        if (pos[0] >= GRID_WIDTH) {
-            pos[0] = 0;
-        }
-        if (pos[0] <= -1) {
-            pos[0] = GRID_WIDTH-1;
-        }
-        if (pos[1] >= GRID_HEIGHT) {
-            pos[1] = 0;
-        }
-        if (pos[1] <= -1) {
-            pos[1] = GRID_HEIGHT-1;
+        if (rl.IsKeyPressed(rl.KEY_SPACE)) {
+            run_auto = !run_auto;
         }
 
-        grid[@intCast(pos[1])][@intCast(pos[0])] = !grid[@intCast(pos[1])][@intCast(pos[0])];
-        if (!grid[@intCast(pos[1])][@intCast(pos[0])]) {
-            switch (pos_facing) {
-                .north => {
-                    pos +%= [_]c_int{1, 0};
-                    pos_facing = .east;
-                },
-                .east => {
-                    pos +%= [_]c_int{0, 1};
-                    pos_facing = .south;
-                },
-                .south => {
-                    pos -%= [_]c_int{1, 0};
-                    pos_facing = .west;
-                },
-                .west => {
-                    pos -%= [_]c_int{0, 1};
-                    pos_facing = .north;
-                },
+        if (run_auto or rl.IsKeyPressed(rl.KEY_RIGHT)) {
+            if (pos[0] >= GRID_WIDTH) {
+                pos[0] = 0;
             }
-        } else {
-            switch (pos_facing) {
-                .north => {
-                    pos -%= [_]c_int{1, 0};
-                    pos_facing = .west;
-                },
-                .east => {
-                    pos -%= [_]c_int{0, 1};
-                    pos_facing = .north;
-                },
-                .south => {
-                    pos +%= [_]c_int{1, 0};
-                    pos_facing = .east;
-                },
-                .west => {
-                    pos +%= [_]c_int{0, 1};
-                    pos_facing = .south;
-                },
+            if (pos[0] <= -1) {
+                pos[0] = GRID_WIDTH-1;
+            }
+            if (pos[1] >= GRID_HEIGHT) {
+                pos[1] = 0;
+            }
+            if (pos[1] <= -1) {
+                pos[1] = GRID_HEIGHT-1;
+            }
+
+            grid[@intCast(pos[1])][@intCast(pos[0])] = !grid[@intCast(pos[1])][@intCast(pos[0])];
+            if (!grid[@intCast(pos[1])][@intCast(pos[0])]) {
+                switch (pos_facing) {
+                    .north => {
+                        pos +%= [_]c_int{1, 0};
+                        pos_facing = .east;
+                    },
+                    .east => {
+                        pos +%= [_]c_int{0, 1};
+                        pos_facing = .south;
+                    },
+                    .south => {
+                        pos -%= [_]c_int{1, 0};
+                        pos_facing = .west;
+                    },
+                    .west => {
+                        pos -%= [_]c_int{0, 1};
+                        pos_facing = .north;
+                    },
+                }
+            } else {
+                switch (pos_facing) {
+                    .north => {
+                        pos -%= [_]c_int{1, 0};
+                        pos_facing = .west;
+                    },
+                    .east => {
+                        pos -%= [_]c_int{0, 1};
+                        pos_facing = .north;
+                    },
+                    .south => {
+                        pos +%= [_]c_int{1, 0};
+                        pos_facing = .east;
+                    },
+                    .west => {
+                        pos +%= [_]c_int{0, 1};
+                        pos_facing = .south;
+                    },
+                }
             }
         }
 

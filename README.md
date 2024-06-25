@@ -5,6 +5,7 @@ Then just run
 ```sh
 zig build run
 ```
+Press space to run the simulation constantly or press the right arrow key to take one step in the simulation
 
 If you'd like to you can edit the main file too:
 ```zig
