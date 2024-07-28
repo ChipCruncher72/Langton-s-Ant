@@ -1,4 +1,3 @@
-const std = @import("std");
 const rl = @cImport({
     @cInclude("raylib.h");
     @cInclude("raymath.h");
